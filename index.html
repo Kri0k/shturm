@@ -1,0 +1,49 @@
+<head>
+	<title>Сколько дней прошло со штурма аэродрома</title>
+	<link rel="icon" href="port.ico" type="image/x-icon">
+	<link rel="stylesheet" href="style.css">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+	<div class="box">
+		<h1>Сколько дней прошло с последнего штурма аэродрома?</h1>
+		<section class="box_grid">
+			<section class="box_grid-cell">
+				<h2 id="days">0</h2>
+				<h3>Дней</h3>
+			</section>
+			<section class="box_grid-cell">
+				<h2 id="hours">0</h2>
+				<h3>Часов</h3>
+			</section>
+			<section class="box_grid-cell">
+				<h2 id="minutes">0</h2>
+				<h3>Минут</h3>
+			</section>
+			<section class="box_grid-cell">
+				<h2 id="secs">0</h2>
+				<h3>Секунд</h3>
+			</section>
+		</section>
+	</div>
+</body>
+<script>
+update();
+function update() {
+	var now = new Date();
+	var bDay = new Date(2024, 0, 4);
+	var secs = Math.round((now - bDay)/1000);
+	var minutes = secs/60;
+	secs = Math.round(secs%60);
+	var hours = minutes/60;
+	minutes = Math.round(minutes%60);
+	var days = Math.round(hours/24);
+	hours = Math.round(hours%24);
+
+	document.getElementById("days").innerHTML = days;
+	document.getElementById("minutes").innerHTML = minutes;
+	document.getElementById("hours").innerHTML = hours;
+	document.getElementById("secs").innerHTML = secs;
+}
+var timer = setInterval(update,1000);
+</script>
